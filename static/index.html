@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>挨拶タイマー</title>
+    <link rel="stylesheet" href="https://classless.de/classless.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-toast-notification@3/dist/theme-sugar.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body hidden>
+    <div id="app" class="app">
+      <template v-if="!loaded">Loading...</template>
+      <template v-if="loaded">
+        <div class="timer">
+          {{ paused ? '⏸️' : '▶️' }}
+          {{ count }}
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <button @click="addCount($event, 600)">+10分</button>
+          </div>
+          <div class="col-3">
+            <button @click="addCount($event, 60)">+1分</button>
+          </div>
+          <div class="col-3">
+            <button @click="addCount($event, 10)">+10秒</button>
+          </div>
+          <div class="col-3">
+            <button @click="addCount($event, 1)">+1秒</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <button @click="addCount($event, -600)">-10分</button>
+          </div>
+          <div class="col-3">
+            <button @click="addCount($event, -60)">-1分</button>
+          </div>
+          <div class="col-3">
+            <button @click="addCount($event, -10)">-10秒</button>
+          </div>
+          <div class="col-3">
+            <button @click="addCount($event, -1)">-1秒</button>
+          </div>
+        </div>
+        <button @click="start($event)" v-show="paused">▶️ スタート</button>
+        <button @click="pause($event)" v-show="!paused">⏸️ 一時停止</button>
+        <button @click="resetCount($event)">タイマーリセット</button>
+        <button @click="resetAll($event)" class="warn">完全リセット</button>
+        <form>
+          <h3>設定</h3>
+          <fieldset>
+            <legend>挨拶設定</legend>
+            <div class="row">
+              <div class="col">
+                <label for="greeting-pattern">反応する言葉</label>
+                <input
+                  id="greeting-pattern"
+                  type="text"
+                  v-model="config.greetingPattern"
+                />
+                <blockquote class="hint">
+                  <p>・カンマ区切りです<br>・カンマの前後にスペースを入れないこと<br>・半角の大文字小文字は区別しません</p>
+                </blockquote>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>時間設定</legend>
+            <div class="row">
+              <div class="col">
+                <label for="greeting-ratio">挨拶で増える秒数</label>
+                <input
+                  id="greeting-ratio"
+                  type="number"
+                  v-model="config.greetingRatio"
+                />
+                <label for="price-ratio">有料チャットで増える秒数 ※100円あたり</label>
+                <input
+                  id="price-ratio"
+                  type="number"
+                  v-model="config.priceRatio"
+                />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>価格設定</legend>
+            <div class="row">
+              <div class="col">
+                <label for="youtube-membership-gift-price">Youtubeのメンバーシップギフトの価格</label>
+                <input
+                  id="youtube-membership-gift-price"
+                  type="number"
+                  v-model="config.youtubeMembershipGiftPrice"
+                />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>マイナスカウント</legend>
+            <div class="row">
+              <div class="col">
+                <input
+                  id="minus-count"
+                  type="checkbox"
+                  v-model="config.minusCount"
+                />
+                <label for="minus-count">有効</label>
+                <blockquote class="hint">
+                  <p>時間切れの後にマイナスに突入できるようにできます<br>厳密な時間運用をしたい場合に使用します</p>
+                </blockquote>
+              </div>
+            </div>
+          </fieldset>
+          <button @click="save($event)">設定保存</button>
+        </form>
+      </template>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-toast-notification@3"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

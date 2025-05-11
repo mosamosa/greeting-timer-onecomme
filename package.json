@@ -1,0 +1,31 @@
+{
+  "name": "greeting-timer",
+  "version": "1.0.0",
+  "description": "わんコメ用挨拶タイマー",
+  "main": "public/plugin.js",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "わんコメ",
+    "onecomme"
+  ],
+  "author": "mosamosa",
+  "type": "commonjs",
+  "license": "MIT",
+  "dependencies": {
+    "@onecomme.com/onesdk": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "copy-webpack-plugin": "^13.0.0",
+    "terser-webpack-plugin": "^5.3.14",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1",
+    "zip-webpack-plugin": "^4.0.3"
+  }
+}

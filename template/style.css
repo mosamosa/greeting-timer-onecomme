@@ -1,0 +1,19 @@
+@import url('../__origin/css/common.css');
+@import url('../__origin/css/theme/basic.css');
+@import url('../__origin/css/direction/bottom-to-top.css');
+@import url('../__origin/css/animation/slide-up.css');
+@import url('../__origin/css/animation/move.css');
+
+body {
+  padding: 0;
+}
+
+.timer {
+  font-size: 100vmin;
+  line-height: 1em;
+  white-space: nowrap;
+  text-align: center;
+  font-family: sans-serif;
+  color: white;
+  -webkit-text-stroke: 3px black;
+}

@@ -1,0 +1,16 @@
+body {
+  padding: 8px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.timer {
+  font-size: 500%;
+  text-align: center;
+}
